@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY untitled-ontology-3 "http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#"
+     xml:base="http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3"
+     xmlns:untitled-ontology-3="http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#friendWith -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-3;friendWith">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:range rdf:resource="&untitled-ontology-3;SocialNetworkAccount"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-3;SocialNetworkAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#hasCreator -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-3;hasCreator"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-3;hasParticipant">
+        <rdfs:range rdf:resource="&untitled-ontology-3;SocialNetworkAccount"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-3;SocialNetworkEvents"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#hasEventID -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-3;hasEventID">
+        <rdfs:domain rdf:resource="&untitled-ontology-3;SocialNetworkEvents"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#hasFacebookID -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-3;hasFacebookID">
+        <rdfs:domain rdf:resource="&untitled-ontology-3;FacebookAccount"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    <owl:Axiom>
+        <rdfs:comment>This can be both number and string (login actually), because we can pickup alias for Facebook&apos;s account. </rdfs:comment>
+        <owl:annotatedSource rdf:resource="&untitled-ontology-3;hasFacebookID"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
+        <owl:annotatedTarget rdf:resource="&xsd;string"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#hasFirstName -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-3;hasFirstName">
+        <rdfs:domain rdf:resource="&untitled-ontology-3;SocialNetworkAccount"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#hasJoinedEvent -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-3;hasJoinedEvent">
+        <rdfs:domain rdf:resource="&untitled-ontology-3;SocialNetworkAccount"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#hasLastName -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-3;hasLastName">
+        <rdfs:domain rdf:resource="&untitled-ontology-3;SocialNetworkAccount"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#DiasporaAccount -->
+
+    <owl:Class rdf:about="&untitled-ontology-3;DiasporaAccount">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-3;SocialNetworkAccount"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#FacebookAccount -->
+
+    <owl:Class rdf:about="&untitled-ontology-3;FacebookAccount">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-3;SocialNetworkAccount"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#FacebookEvent -->
+
+    <owl:Class rdf:about="&untitled-ontology-3;FacebookEvent">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-3;SocialNetworkEvents"/>
+        <rdfs:comment>In case if someone lets everyone (publicly) see list of quests, we will be able to crawl more profiles. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#SocialNetworkAccount -->
+
+    <owl:Class rdf:about="&untitled-ontology-3;SocialNetworkAccount"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#SocialNetworkEvents -->
+
+    <owl:Class rdf:about="&untitled-ontology-3;SocialNetworkEvents"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#TwitterAccount -->
+
+    <owl:Class rdf:about="&untitled-ontology-3;TwitterAccount">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-3;SocialNetworkAccount"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#event1 -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-3;event1">
+        <hasEventID>56456456456</hasEventID>
+        <hasParticipant rdf:resource="&untitled-ontology-3;person1"/>
+        <hasParticipant rdf:resource="&untitled-ontology-3;person2"/>
+        <hasCreator rdf:resource="&untitled-ontology-3;person3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#event2 -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-3;event2">
+        <hasEventID>4543534534534</hasEventID>
+        <hasParticipant rdf:resource="&untitled-ontology-3;person1"/>
+        <hasCreator rdf:resource="&untitled-ontology-3;person2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#person1 -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-3;person1">
+        <hasFirstName>John</hasFirstName>
+        <hasLastName>Smith</hasLastName>
+        <hasFacebookID>497543587345</hasFacebookID>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#person2 -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-3;person2">
+        <hasLastName>Nowak</hasLastName>
+        <hasFirstName>John</hasFirstName>
+        <hasFacebookID>2345237423</hasFacebookID>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lab05/ontologies/2014/4/untitled-ontology-3#person3 -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-3;person3">
+        <hasFirstName>Barack</hasFirstName>
+        <hasLastName>Obama</hasLastName>
+        <hasFacebookID>23423534545</hasFacebookID>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
