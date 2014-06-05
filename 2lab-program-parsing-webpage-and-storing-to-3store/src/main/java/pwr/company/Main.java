@@ -27,6 +27,7 @@ public class Main
                         @Override
                         void callable(Object context) {
                             System.out.println("added "+context);
+                            mainwindow.log("added "+context);
                         }
                     });
                     

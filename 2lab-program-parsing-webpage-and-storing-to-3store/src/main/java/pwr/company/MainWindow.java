@@ -79,11 +79,15 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        log("parsing "+jTextField1.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void log(String log) {
         DefaultListModel model = (DefaultListModel) jList1.getModel();
-        model.addElement(new java.util.Date()+" parsing "+jTextField1.getText());
+        model.addElement(new java.util.Date()+": "+log);
         if(model.getSize()>100)
             model.remove(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     /**
      * @param args the command line arguments
