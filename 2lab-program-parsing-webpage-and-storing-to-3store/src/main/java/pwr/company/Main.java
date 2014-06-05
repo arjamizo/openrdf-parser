@@ -23,7 +23,6 @@ public class Main
                 try {
                     WebRDFCrawler webrdfcrwl = new WebRDFCrawler();
                     final MainWindow mainwindow=new MainWindow();
-                    
                     webrdfcrwl.addHandler("onNewMeasure",new EvHandler() {
                         @Override
                         void callable(Object context) {
@@ -31,6 +30,7 @@ public class Main
                         }
                     });
                     
+                    mainwindow.setVisible(true);
                     webrdfcrwl.crawl("http://localhost:8080");
                 } catch (Throwable ex) {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
