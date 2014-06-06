@@ -27,12 +27,20 @@ import org.xml.sax.XMLReader;
 class WebRDFCrawler {
     void crawl(String url) {
         try {
-            callEvent("onNewMeasure", "ell " + url);
-            callEvent("onNewMeasure","New Measure is here "+new java.util.Date().toString());
+//            callEvent("onNewMeasure", "ell " + url);
+//            callEvent("onNewMeasure","New Measure is here "+new java.util.Date().toString());
             StatementSink sink = new TurtleSink(System.out);
+            sink=new TurtleSink(System.out) {
+
+                @Override
+                public void addLiteral(String string, String string1, String string2, String string3, String string4) {
+                    LOG.severe(java.util.Arrays.asList(new String[]{string, string1, string2, string3, string4}).toString());
+                    super.addLiteral(string, string1, string2, string3, string4);
+                }
+
+            };
             XMLReader reader = net.rootdev.javardfa.ParserFactory.createReaderForFormat(sink, Format.HTML, new URIResolver());
             reader.parse(url);
-        
         } catch ( java.net.ConnectException e) {
             String er="try running HTTP server\nbahs: ls ./WebsiteRDFaMicrodataMicroformats.html && python -m SimpleHTTPServer";
             javax.swing.JOptionPane.showMessageDialog(null, er);

@@ -29,14 +29,14 @@ public class Main
 
                         @Override
                         void callable(Object context) {
-                            LOG.info("handling "+context);
+//                            LOG.info("handling "+context);
                             webrdfcrwl.crawl(""+context);
                         }
                     });
                     webrdfcrwl.addHandler("onNewMeasure",new EvHandler() {
                         @Override
                         void callable(Object context) {
-                            System.out.println("added "+context);
+//                            System.out.println("added "+context);
                             mainwindow.log("added "+context);
                         }
                     });
