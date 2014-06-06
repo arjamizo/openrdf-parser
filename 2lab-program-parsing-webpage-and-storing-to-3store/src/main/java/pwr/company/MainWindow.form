@@ -71,7 +71,7 @@
     </Container>
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="webpage.html"/>
+        <Property name="text" type="java.lang.String" value="http://arzoxadi.tk/rdf/WebsiteRDFaMicrodataMicroformats.html"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">

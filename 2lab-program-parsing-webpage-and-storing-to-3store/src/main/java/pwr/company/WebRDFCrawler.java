@@ -6,18 +6,37 @@
 
 package pwr.company;
 
+import static java.lang.String.format;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.rootdev.javardfa.ParserFactory.Format;
+import static net.rootdev.javardfa.ProfileCollector.uri;
+import net.rootdev.javardfa.StatementSink;
+import net.rootdev.javardfa.output.TurtleSink;
+import net.rootdev.javardfa.uri.URIResolver;
+import org.xml.sax.XMLReader;
 
 /**
  *
  * @author azochniak
  */
 class WebRDFCrawler {
-    void crawl(String httplocalhost8080) {
-        callEvent("onNewMeasure","New Measure is here "+new java.util.Date().toString());
+    void crawl(String url) {
+        try {
+            callEvent("onNewMeasure", "ell");
+//            net.rootdev.javardfa.StatementSink
+//        callEvent("onNewMeasure","New Measure is here "+new java.util.Date().toString());
+            StatementSink sink = new TurtleSink(System.out);
+            XMLReader reader = net.rootdev.javardfa.ParserFactory.createReaderForFormat(sink, Format.XHTML, new URIResolver());
+            reader.parse(uri);
+
+        } catch (Exception ex) {
+            Logger.getLogger(WebRDFCrawler.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RuntimeException(ex);
+        }
     }
     
     HashMap<String, List<EvHandler>> listeners=new HashMap();

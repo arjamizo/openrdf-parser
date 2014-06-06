@@ -8,6 +8,7 @@ package pwr.company;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,14 +16,23 @@ import javax.swing.JOptionPane;
  * @author azochniak
  */
 public class Main
-{    public static void main(final String[] args) {
+{    public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    WebRDFCrawler webrdfcrwl = new WebRDFCrawler();
+                    System.out.println("set handler");
                     final MainWindow mainwindow=new MainWindow();
+                    final WebRDFCrawler webrdfcrwl = new WebRDFCrawler();
+                    mainwindow.setRunHandler(new EvHandler() {
+
+                        @Override
+                        void callable(Object context) {
+                            LOG.info("handling "+context);
+                            webrdfcrwl.crawl(""+context);
+                        }
+                    });
                     webrdfcrwl.addHandler("onNewMeasure",new EvHandler() {
                         @Override
                         void callable(Object context) {
@@ -30,9 +40,8 @@ public class Main
                             mainwindow.log("added "+context);
                         }
                     });
-                    
                     mainwindow.setVisible(true);
-                    webrdfcrwl.crawl("http://localhost:8080");
+//                    webrdfcrwl.crawl("http://localhost:8080");
                 } catch (Throwable ex) {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     PrintStream ps = new PrintStream(baos);
@@ -46,4 +55,5 @@ public class Main
             }
         });
     }
+    private static final Logger LOG = Logger.getLogger(Main.class.getName());
 }

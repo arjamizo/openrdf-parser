@@ -6,6 +6,7 @@
 
 package pwr.company;
 
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -40,7 +41,7 @@ public class MainWindow extends javax.swing.JFrame {
         jList1.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(jList1);
 
-        jTextField1.setText("webpage.html");
+        jTextField1.setText("http://arzoxadi.tk/rdf/WebsiteRDFaMicrodataMicroformats.html");
 
         jButton1.setText("Parse webpage");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +80,8 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        log("parsing "+jTextField1.getText());
+//        log("parsing "+jTextField1.getText());
+        runHandler.call(jTextField1.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void log(String log) {
@@ -117,6 +119,7 @@ public class MainWindow extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        System.err.println("Note that this function created only window. Additional feateures are required.");
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainWindow().setVisible(true);
@@ -130,4 +133,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    void setRunHandler(EvHandler evHandler) {
+        this.runHandler=evHandler;
+        System.out.println("set handler to "+this.runHandler);
+    }
+    private static final Logger LOG = Logger.getLogger(MainWindow.class.getName());
+    private EvHandler runHandler;
+
 }
