@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import net.rootdev.javardfa.ParserFactory.Format;
 import static net.rootdev.javardfa.ProfileCollector.uri;
 import net.rootdev.javardfa.StatementSink;
@@ -26,13 +27,16 @@ import org.xml.sax.XMLReader;
 class WebRDFCrawler {
     void crawl(String url) {
         try {
-            callEvent("onNewMeasure", "ell");
-//            net.rootdev.javardfa.StatementSink
-//        callEvent("onNewMeasure","New Measure is here "+new java.util.Date().toString());
+            callEvent("onNewMeasure", "ell " + url);
+            callEvent("onNewMeasure","New Measure is here "+new java.util.Date().toString());
             StatementSink sink = new TurtleSink(System.out);
-            XMLReader reader = net.rootdev.javardfa.ParserFactory.createReaderForFormat(sink, Format.XHTML, new URIResolver());
-            reader.parse(uri);
-
+            XMLReader reader = net.rootdev.javardfa.ParserFactory.createReaderForFormat(sink, Format.HTML, new URIResolver());
+            reader.parse(url);
+        
+        } catch ( java.net.ConnectException e) {
+            String er="try running HTTP server\nbahs: ls ./WebsiteRDFaMicrodataMicroformats.html && python -m SimpleHTTPServer";
+            javax.swing.JOptionPane.showMessageDialog(null, er);
+            throw new RuntimeException(er, e);
         } catch (Exception ex) {
             Logger.getLogger(WebRDFCrawler.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException(ex);

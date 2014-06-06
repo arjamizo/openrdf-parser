@@ -41,7 +41,7 @@ public class MainWindow extends javax.swing.JFrame {
         jList1.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(jList1);
 
-        jTextField1.setText("http://arzoxadi.tk/rdf/WebsiteRDFaMicrodataMicroformats.html");
+        jTextField1.setText("http://localhost:8000/WebsiteRDFaMicrodataMicroformats.html");
 
         jButton1.setText("Parse webpage");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -57,10 +57,10 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
