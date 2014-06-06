@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
  * @author azochniak
  */
 public class Main
-{    public static void main(String[] args) {
+{    
+    public static void main(String[] args) {
+        final EntitiySaverToRepo saver = new EntitiySaverToRepo();
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
             @Override
@@ -35,9 +37,10 @@ public class Main
                     });
                     webrdfcrwl.addHandler("onNewMeasure",new EvHandler() {
                         @Override
-                        void callable(Object context) {
+                        void callable(Object newObj) {
 //                            System.out.println("added "+context);
-                            mainwindow.log("added "+context);
+                            mainwindow.log("added "+newObj);
+                            saver.add(newObj);
                         }
                     });
                     mainwindow.setVisible(true);
