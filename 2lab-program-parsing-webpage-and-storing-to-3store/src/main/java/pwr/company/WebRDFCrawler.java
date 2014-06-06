@@ -34,10 +34,11 @@ class WebRDFCrawler {
 
                 @Override
                 public void addLiteral(String string, String string1, String string2, String string3, String string4) {
-                    LOG.severe(java.util.Arrays.asList(new String[]{string, string1, string2, string3, string4}).toString());
+                    String[] info = new String[]{string, string1, string2, string3, string4};
+                    LOG.severe(java.util.Arrays.asList(info).toString());
+                    callEvent("onNewMeasure", java.util.Arrays.asList(info));
                     super.addLiteral(string, string1, string2, string3, string4);
                 }
-
             };
             XMLReader reader = net.rootdev.javardfa.ParserFactory.createReaderForFormat(sink, Format.HTML, new URIResolver());
             reader.parse(url);
