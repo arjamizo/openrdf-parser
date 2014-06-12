@@ -7,6 +7,8 @@
 
 package org.example.www.strings;
 
+import java.security.NoSuchAlgorithmException;
+
 public interface NewPortType extends java.rmi.Remote {
-    public java.lang.String[] encode(java.lang.String in, java.lang.String[] in1) throws java.rmi.RemoteException;
+    public java.lang.String[] encode(java.lang.String in, java.lang.String[] in1) throws java.rmi.RemoteException, NoSuchAlgorithmException;
 }

@@ -7,6 +7,8 @@
 
 package org.example.www.strings;
 
+import java.security.NoSuchAlgorithmException;
+
 public class NewBindingSkeleton implements org.example.www.strings.NewPortType, org.apache.axis.wsdl.Skeleton {
     private org.example.www.strings.NewPortType impl;
     private static java.util.Map _myOperations = new java.util.Hashtable();
@@ -52,7 +54,7 @@ public class NewBindingSkeleton implements org.example.www.strings.NewPortType, 
     public NewBindingSkeleton(org.example.www.strings.NewPortType impl) {
         this.impl = impl;
     }
-    public java.lang.String[] encode(java.lang.String in, java.lang.String[] in1) throws java.rmi.RemoteException
+    public java.lang.String[] encode(java.lang.String in, java.lang.String[] in1) throws java.rmi.RemoteException, NoSuchAlgorithmException
     {
         java.lang.String[] ret = impl.encode(in, in1);
         return ret;
