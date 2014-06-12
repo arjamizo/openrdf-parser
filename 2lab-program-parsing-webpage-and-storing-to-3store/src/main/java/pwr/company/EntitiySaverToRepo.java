@@ -13,6 +13,8 @@ import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.http.HTTPRepository;
+import org.openrdf.repository.util.RDFInserter;
+import org.openrdf.rio.RDFFormat;
 
 /**
  *
@@ -20,11 +22,12 @@ import org.openrdf.repository.http.HTTPRepository;
  */
 class EntitiySaverToRepo {
     RepositoryConnection con;
-    private static Repository repo() throws RepositoryException {
+    Repository repo;
+    private Repository repo() throws RepositoryException {
         String sesameServer = "http://localhost:8080/openrdf-sesame/";
         String repositoryID = "companyEmployees";
 
-        Repository repo = new HTTPRepository(sesameServer, repositoryID);
+        repo = new HTTPRepository(sesameServer, repositoryID);
         repo.initialize();
         return repo;
     }
@@ -49,7 +52,15 @@ class EntitiySaverToRepo {
     }
     
     public boolean add(Object obj) {
-        //INSERT QUERY HERE
+        try {
+            RepositoryConnection con = repo.getConnection();
+            con.setAutoCommit(false);
+//            con.add(null, null, RDFFormat.N3, rsrcs);
+            con.add(new java.io.File("/tmp/a.nq"), null, RDFFormat.N3);
+            con.commit();
+        } catch (Exception ex) {
+            Logger.getLogger(EntitiySaverToRepo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
 }

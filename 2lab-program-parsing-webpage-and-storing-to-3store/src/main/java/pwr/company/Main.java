@@ -28,7 +28,7 @@ public class Main
                     final MainWindow mainwindow=new MainWindow();
                     final WebRDFCrawler webrdfcrwl = new WebRDFCrawler();
                     mainwindow.setRunHandler(new EvHandler() {
-
+                        
                         @Override
                         void callable(Object context) {
 //                            LOG.info("handling "+context);

@@ -29,7 +29,7 @@ class WebRDFCrawler {
         try {
 //            callEvent("onNewMeasure", "ell " + url);
 //            callEvent("onNewMeasure","New Measure is here "+new java.util.Date().toString());
-            StatementSink sink = new TurtleSink(System.out);
+            StatementSink sink;// = new TurtleSink(System.out);
             sink=new TurtleSink(System.out) {
 
                 @Override
