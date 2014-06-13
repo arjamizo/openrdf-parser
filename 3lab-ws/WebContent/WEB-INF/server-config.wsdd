@@ -3,7 +3,7 @@
   <ns1:parameter name="sendMultiRefs" value="true"/>
   <ns1:parameter name="disablePrettyXML" value="true"/>
   <ns1:parameter name="adminPassword" value="admin"/>
-  <ns1:parameter name="attachments.Directory" value="/home/azochniak/workspace-javaee/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/3lab-ws/WEB-INF/attachments"/>
+  <ns1:parameter name="attachments.Directory" value="C:\WORKSPACES\ISM\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Bottom-up\WEB-INF\attachments"/>
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
@@ -28,19 +28,29 @@
   <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
- <ns1:service name="NewPort1" provider="java:RPC" style="wrapped" use="literal">
+ <ns1:service name="NewWSDLFileSOAP" provider="java:RPC" style="wrapped" use="literal">
   <ns1:parameter name="allowedMethods" value="*"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="wsdlPortType" value="NewPortType"/>
-  <ns1:parameter name="className" value="org.example.www.strings.NewBindingSkeleton"/>
-  <ns1:parameter name="wsdlServicePort" value="NewPort1"/>
-  <ns1:parameter name="wsdlTargetNamespace" value="http://www.example.org/strings/"/>
-  <ns1:parameter name="wsdlServiceElement" value="NewService"/>
-  <ns1:parameter name="schemaUnqualified" value="http://www.example.org/strings/"/>
+  <ns1:parameter name="wsdlPortType" value="NewWSDLFile"/>
+  <ns1:parameter name="className" value="org.example.www.NewWSDLFile.NewWSDLFileSOAPSkeleton"/>
+  <ns1:parameter name="wsdlServicePort" value="NewWSDLFileSOAP"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://www.example.org/NewWSDLFile/"/>
+  <ns1:parameter name="wsdlServiceElement" value="NewWSDLFile"/>
+  <ns1:parameter name="schemaUnqualified" value="http://www.example.org/NewWSDLFile/"/>
  </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="wsdlSOAP" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:parameter name="allowedMethods" value="*"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="wsdl"/>
+  <ns1:parameter name="className" value="org.example.www.wsdl.WsdlSOAPSkeleton"/>
+  <ns1:parameter name="wsdlServicePort" value="wsdlSOAP"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://www.example.org/wsdl/"/>
+  <ns1:parameter name="wsdlServiceElement" value="wsdl"/>
+  <ns1:parameter name="schemaUnqualified" value="http://www.example.org/wsdl/"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>
