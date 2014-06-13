@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="wsdl" targetNamespace="http://www.example.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/wsdl/">
+      <xsd:element name="NewOperation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperation1">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element maxOccurs="unbounded" minOccurs="1" name="in" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperation1Response">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NewOperationRequest">
+    <wsdl:part element="tns:NewOperation" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse">
+    <wsdl:part element="tns:NewOperationResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="NewOperation1Request">
+  	<wsdl:part element="tns:NewOperation1" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="NewOperation1Response">
+  	<wsdl:part element="tns:NewOperation1Response" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="wsdl">
+    <wsdl:operation name="NewOperation">
+      <wsdl:documentation>This operation concatenat two strings and return them</wsdl:documentation>
+      <wsdl:input message="tns:NewOperationRequest"/>
+      <wsdl:output message="tns:NewOperationResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="NewOperation1">
+    	<wsdl:documentation>This operation compares if the first string starts with the second string and return true or fals </wsdl:documentation>
+    	<wsdl:input message="tns:NewOperation1Request"/>
+    	<wsdl:output message="tns:NewOperation1Response"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsdlSOAP" type="tns:wsdl">
+
+  	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  	<wsdl:operation name="NewOperation">
+
+  		<soap:operation soapAction="http://www.example.org/wsdl/NewOperation"/>
+  		<wsdl:input>
+
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="NewOperation1">
+  		<soap:operation soapAction="http://www.example.org/wsdl/NewOperation1"/>
+  		<wsdl:input>
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="wsdl">
+    <wsdl:port binding="tns:wsdlSOAP" name="wsdlSOAP">
+      <soap:address location="http://localhost:8080/Bottom-up/services/wsdlSOAP"/>
+    </wsdl:port>
+
+  </wsdl:service>
+</wsdl:definitions>
